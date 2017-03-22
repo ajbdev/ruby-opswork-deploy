@@ -111,7 +111,7 @@ stacks.each do |stack|
 
 
       puts ""
-      puts "Deployment finished in #{started_at} seconds"
+      puts "Deployment finished in #{Time.now.to_i - started_at} seconds"
       puts "Status: #{opsworks.describe_deployments(:deployment_ids => [deploy.deployment_id]).deployments[0].status}"
     end
   end
