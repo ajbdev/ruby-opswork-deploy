@@ -109,9 +109,10 @@ stacks.each do |stack|
         break if current_at % 10 == 0 and opsworks.describe_deployments(:deployment_ids => [deploy.deployment_id]).deployments[0].completed_at
       end
 
+
       puts ""
       puts "Deployment finished in #{started_at} seconds"
-      puts ""
+      puts "Status: #{opsworks.describe_deployments(:deployment_ids => [deploy.deployment_id]).deployments[0].status}"
     end
   end
 end
