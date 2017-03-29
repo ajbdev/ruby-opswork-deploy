@@ -89,6 +89,8 @@ stacks.each do |stack|
       puts ""
       puts "View log: https://console.aws.amazon.com/opsworks/home?region=us-east-1#/stack/#{stack.stack_id}/deployments/#{deploy.deployment_id}"
       puts ""
+      puts "Note: exiting this process will not stop this deployment"
+      puts ""
 
       started_at = Time.now.to_i
       loop do
@@ -117,5 +119,9 @@ stacks.each do |stack|
   end
 end
 
+trap "SIGINT" do
+  puts "Exiting"
+  exit 130
+end
 
 parser.parse(ARGV)
