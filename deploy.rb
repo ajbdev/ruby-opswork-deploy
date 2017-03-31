@@ -73,6 +73,8 @@ stacks.each do |stack|
         layer.layer_id if target_layers.include? layer.name.downcase
       end.compact
 
+      puts "Targeted layers: #{target_layers.join(',')}\n"
+
       print "Starting deploy..."
       # Create deployment
       deploy = opsworks.create_deployment(
