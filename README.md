@@ -12,5 +12,6 @@ Available commands:
 
 Global Options:
     -h, --help                       Show help
+    -l, --layer                      web,worker
 ```
 
