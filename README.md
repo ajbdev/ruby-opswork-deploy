@@ -8,9 +8,7 @@ Usage: deploy.rb {help | status | threads-production | threads-qa |
 Available commands:
     help              Provide help for individual commands
     status            View current revision/branch of each OpsWorks stack
-    threads-productionDeploy to threads-production
-    threads-qa        Deploy to threads-qa
-    threads-staging   Deploy to threads-staging
+    yourstack         Deploy to the OpsWork stack named "yourstack"
 
 Global Options:
     -h, --help                       Show help
