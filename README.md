@@ -34,7 +34,7 @@ threads-production   ourthreads.com            1.50.4
 To deploy:
 
 ```
-ruby deploy.rb threads-qa 532-feedback-visible-option
+$ ruby deploy.rb threads-qa 532-feedback-visible-option
 
 Deploying 532-feedback-visible-option to threads-qa
 Changing from version vagrant-windows to 532-feedback-visible-option... done
@@ -52,7 +52,8 @@ Detaching from the process will not cancel the deployment.
 You can target a specific layer by appending the --layer parameter:
 
 ```
-ruby deploy.rb threads-staging 532-feedback-visible-option --layer worker
+$ ruby deploy.rb threads-staging 532-feedback-visible-option --layer worker
+
 Changing from version 532-feedback-visible-option to 532-feedback-visible-option... done
 Targeted layers: worker
 ...
