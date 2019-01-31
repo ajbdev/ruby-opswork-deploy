@@ -18,8 +18,8 @@ parser.add_command('status') do |command|
   command.short_desc "View current revision/branch of each OpsWorks stack"
   command.takes_commands(false)
   command.action do
-    widths = [20,25,20]
-    puts "#{'Stack'.ljust(widths[0])} #{'Domain'.ljust(widths[1])} #{'Branch/Tag'.ljust(widths[2])}"
+    widths = [20,25,20,25]
+    puts "#{'Stack'.ljust(widths[0])} #{'Domain'.ljust(widths[1])} #{'Branch/Tag'.ljust(widths[2])} #{'Last deployed'.ljust(widths[3])}"
 
     stacks.each do |stack|
       result = opsworks.describe_apps(stack_id: stack.stack_id)
@@ -28,7 +28,9 @@ parser.add_command('status') do |command|
 
       app = result.apps.first
 
-      puts "#{stack.name.ljust(widths[0])} #{app.domains.join(',').ljust(widths[1])} #{app.app_source.revision.ljust(widths[2])}"
+      last_deploy = opsworks.describe_deployments(:stack_id => stack.stack_id).deployments.first
+
+      puts "#{stack.name.ljust(widths[0])} #{app.domains.join(',').ljust(widths[1])} #{app.app_source.revision.ljust(widths[2])} #{last_deploy.completed_at.ljust(widths[3])}"
     end
     puts ""
   end
