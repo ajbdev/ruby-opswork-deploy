@@ -64,7 +64,7 @@ stacks.each do |stack|
       end
 
       # Modify App settings
-      print "Changing from version #{app.app_source.revision} to #{version}..."
+      print "Deploying latest version of #{app.app_source.revision} (was: #{version})"
       opsworks.update_app(:app_id => app.app_id, :app_source => { :revision => version })
       print " done\n"
       $stdout.flush
