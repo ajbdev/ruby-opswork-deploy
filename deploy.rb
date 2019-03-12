@@ -30,7 +30,10 @@ parser.add_command('status') do |command|
 
       last_deploy = opsworks.describe_deployments(:stack_id => stack.stack_id).deployments.first
 
-      puts "#{stack.name.ljust(widths[0])} #{app.domains.join(',').ljust(widths[1])} #{app.app_source.revision.ljust(widths[2])} #{last_deploy.completed_at.ljust(widths[3])}"
+      deploy_date = last_deploy ? last_deploy.completed_at : 'Not deployed'
+      version = app.app_source ? app.app_source.revision : 'Not deployed'
+
+      puts "#{stack.name.ljust(widths[0])} #{app.domains.join(',').ljust(widths[1])} #{version.ljust(widths[2])} #{deploy_date.ljust(widths[3])}"
     end
     puts ""
   end
